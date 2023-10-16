@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block title %}Обо мне{% endblock %}
+
+{% block content %}
+    <aside class="title_text">
+        <h1>ОБО МНЕ</h1>
+    </aside>
+    <aside class="main_text">
+        <h5>Я, Брагин Николай, начинающий, но крайне одаренный Вack-end разработчик.</h5><br>
+        <h5>В данный момент прохожу обучение по курсу PYTHON в Tehnikum school, и, признаюсь честно, мне это чертовски нравится! </h5><br>
+        <h5>С удовольствием устроюсь стажером в любую IT компанию (предпочтительно IT-park, Ташкент) для закрепления скилов и наработки бесценного опыта.</h5><br>
+        <h5>Так же готов преподавать в учебных заведениях или ВУЗах (опыт преподавательской деятельности 7 лет)</h5><br>
+    </aside>
+{% endblock %}
+
+{% block search %}
+    <form action="search" method="POST">
+        <input class="find" type="text" placeholder="Поиск по имени" name="search_product">
+    </form>
+{% endblock %}
+
+{% block tools %}
+<aside class="tools">
+    <h5>
+        ПРОФЕССИИ:
+        {% for category in categories %}
+            <a href="category/{{ category.id }}">{{ category.category_name }}</a>
+        {% endfor %}<br>
+        <br>СОТРУДНИКИ:
+        {% for product in products %}
+            <a href="product/{{ product.id }}">{{ product.product_name }}</a>
+        {% endfor %}
+    </h5>
+</aside>
+{% endblock %}
+
+
+
+
+
+
+
