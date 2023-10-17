@@ -9,3 +9,9 @@ class UserRegisterModel(BaseModel):
     password: str = Form(...)
 
 
+# Класс валидации для входа
+class UseLoginModel(BaseModel):
+    name: str = Form(...)
+    password: str = Form(...)
+
+

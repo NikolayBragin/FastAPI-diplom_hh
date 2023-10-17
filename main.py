@@ -20,6 +20,7 @@ template = Jinja2Templates(directory='templates')
 # роут для главной страницы
 @app.get('/')
 async def home(request: Request):
+
     return template.TemplateResponse('index.html', {'request': request})
 
 # роут для страницы about
@@ -36,6 +37,8 @@ async def contacts(request: Request):
 @app.get('/news_home')
 async def news_home(request: Request):
     return template.TemplateResponse('news_home.html', {'request': request})
+
+
 
 # Регистрация компонентов
 app.include_router(user_router)

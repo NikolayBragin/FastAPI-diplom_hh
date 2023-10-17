@@ -11,3 +11,8 @@ def add_new_user_db(name, email, password, reg_date):
 
 
 
+
+
+
+
+
