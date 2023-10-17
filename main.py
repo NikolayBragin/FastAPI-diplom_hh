@@ -20,8 +20,17 @@ template = Jinja2Templates(directory='templates')
 # роут для главной страницы
 @app.get('/')
 async def home(request: Request):
-
     return template.TemplateResponse('index.html', {'request': request})
+
+# роут для логина
+@app.get('/login')
+async def login(request: Request):
+    return template.TemplateResponse('login.html', {'request': request})
+
+# роут для логаута
+@app.get('/logout')
+async def logout(request: Request):
+    return template.TemplateResponse('logout.html', {'request': request})
 
 # роут для страницы about
 @app.get('/about')
