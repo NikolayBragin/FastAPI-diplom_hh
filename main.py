@@ -17,6 +17,9 @@ app.mount('/static', StaticFiles(directory='static'), name='static')
 template = Jinja2Templates(directory='templates')
 ## Если хотим выводить html странички
 
+# Регистрация компонентов
+app.include_router(user_router)
+
 # роут для главной страницы
 @app.get('/')
 async def home(request: Request):
@@ -30,7 +33,7 @@ async def login(request: Request):
 # роут для логаута
 @app.get('/logout')
 async def logout(request: Request):
-    return template.TemplateResponse('logout.html', {'request': request})
+    return template.TemplateResponse('index.html', {'request': request})
 
 # роут для страницы about
 @app.get('/about')
@@ -48,6 +51,8 @@ async def news_home(request: Request):
     return template.TemplateResponse('news_home.html', {'request': request})
 
 
+# роут для страницы register
+@app.get('/register')
+async def register(request: Request):
+    return template.TemplateResponse('register.html', {'request': request})
 
-# Регистрация компонентов
-app.include_router(user_router)
