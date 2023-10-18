@@ -4,7 +4,7 @@ from datetime import datetime
 from starlette.responses import RedirectResponse
 from starlette.templating import Jinja2Templates
 
-from database.userservice import add_new_user_db, login_user_db
+from database.userservice import add_new_user_db, get_all_category_db
 from user import UserRegisterModel, UseLoginModel
 
 user_router = APIRouter(prefix='/user', tags=['Работа с пользователем'])
@@ -17,8 +17,8 @@ template = Jinja2Templates(directory='templates')
 #     result = add_new_user_db(reg_date=datetime.now(), name=name, email=email, password=password)
 #     print(result)
 #     return RedirectResponse('/', status_code=302)
-
-
+#
+#
 # # Регистрация пользователя страница
 # @user_router.get('/register')
 # async def register_user_get(request: Request):
@@ -41,5 +41,15 @@ template = Jinja2Templates(directory='templates')
 # async def logout_user_get(request: Request):
 #     return RedirectResponse('/')
 
+# Запрос на вывод всех профессий
+@user_router.get('/categorys')
+async def all_category_info():
+    categories = get_all_category_db()
+    return {'status': 1, 'message': categories}
 
+# Запрос на вывод всех сотрудников
+@user_router.get('/product')
+async def all_product_info():
+    product = get_all_category_db()
+    return {'status': 1, 'message': product}
 

@@ -24,12 +24,12 @@
 <aside class="tools">
     <h5>
         ПРОФЕССИИ:
-        {% for category in categories %}
-            <a href="category/{{ category.id }}">{{ category.category_name }}</a>
+        {% for category in category %}
+            <a href="category/{{ category.category_id }}">{{ category.category_name }}</a>
         {% endfor %}<br>
         <br>СОТРУДНИКИ:
-        {% for product in products %}
-            <a href="product/{{ product.id }}">{{ product.product_name }}</a>
+        {% for product in product %}
+            <a href="product/{{ product.product_id }}">{{ product.product_name }}</a>
         {% endfor %}
     </h5>
 </aside>
