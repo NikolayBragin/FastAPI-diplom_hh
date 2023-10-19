@@ -4,7 +4,7 @@ from datetime import datetime
 from starlette.responses import RedirectResponse
 from starlette.templating import Jinja2Templates
 
-from database.userservice import add_new_user_db, get_all_category_db
+from database.userservice import add_new_user_db, get_all_category_db, get_exact_product_db, get_exact_category_db
 from user import UserRegisterModel, UseLoginModel
 
 user_router = APIRouter(prefix='/user', tags=['Работа с пользователем'])
@@ -53,3 +53,16 @@ async def all_product_info():
     product = get_all_category_db()
     return {'status': 1, 'message': product}
 
+# Запрос на получение определенного сотрудника
+@user_router.get('/exact-product')
+async def get_exact_product(product_id: int):
+    exact_result = get_exact_product_db(product_id)
+    if exact_result:
+        return {'status': 1, 'message': exact_result}
+
+# Запрос на получение определенной профессии
+@user_router.get('/exact-category')
+async def get_exact_category(product_category: str):
+    exact_category = get_exact_category_db(product_category)
+    if exact_category:
+        return {'status': 1, 'message': exact_category}

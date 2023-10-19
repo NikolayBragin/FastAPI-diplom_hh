@@ -29,6 +29,21 @@ def get_all_product_db():
     all_product = db.query(Product).all()
     return all_product
 
+# Получить информацию определенного сотрудника
+def get_exact_product_db(product_id):
+    db = next(get_db())
+    # Запрос в базу данных на получение определенного сотрудника по его id
+    exact_product = db.query(Product).filter_by(product_id=product_id).first()
+    return exact_product
+
+# Получить информацию определенной профессии
+def get_exact_category_db(product_category):
+    db = next(get_db())
+    # Запрос в базу данных на получение профессии по id
+    exact_category = db.query(Product).filter_by(product_category=product_category).all()
+    return exact_category
+
+
 
 
 

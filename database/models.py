@@ -16,15 +16,15 @@ class User(Base):
 # Таблица профессий
 class Category(Base):
     __tablename__ = 'categorys'
-    category_id = Column(Integer, autoincrement=True, primary_key=True)
-    category_name = Column(String)
+    category_id = Column(Integer, autoincrement=True)
+    category_name = Column(String, primary_key=True)
 
 # Таблица персонала
 class Product(Base):
     __tablename__ = 'products'
     product_id = Column(Integer, autoincrement=True, primary_key=True)
     product_name = Column(String)
-    product_category = Column(Integer, ForeignKey('categorys.category_id'))
+    product_category = Column(String, ForeignKey('categorys.category_name'))
     product_des = Column(String)
     product_price = Column(Float)
     product_photo = Column(String)
